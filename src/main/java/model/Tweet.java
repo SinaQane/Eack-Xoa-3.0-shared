@@ -7,45 +7,65 @@ import java.util.List;
 
 public class Tweet
 {
-    private final long id;
-    private final long owner;
-    private int reports = 0;
-    private final String text;
-    private final Date tweetDate = new Date();
+    private Long id;
+    private Long owner;
+    private int reports;
+    private String text;
+    private Date tweetDate;
 
     // upperTweetId is the id of the tweet's parent tweet (-1 if non-existent)
-    private long upperTweet = -1;
+    private Long upperTweet;
     // base64Picture is the picture linked to the tweet converted into base64 binary form
-    private final String base64Picture;
+    private String base64Picture;
     // visible indicates that is this tweet deleted or not
-    private boolean visible = true;
+    private boolean visible;
 
     private List<Long> comments = new LinkedList<>();
     private List<Long> upvotes = new ArrayList<>();
     private List<Long> downvotes = new ArrayList<>();
     private List<Long> retweets = new ArrayList<>();
 
-    public Tweet(long id, long owner, String text, String base64Picture)
+    public Tweet() {}
+
+    public Tweet(User owner, String text, String base64Picture)
     {
-        this.id = id;
-        this.owner = owner;
-        this.text = text;
         this.base64Picture = base64Picture;
+        this.owner = owner.getId();
+        this.text = text;
+        tweetDate = new Date();
+        upperTweet = -1L;
+        visible = true;
+        reports = 0;
     }
 
-    public long getId()
+    public Long getId()
     {
         return id;
     }
 
-    public long getOwner()
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+
+    public Long getOwner()
     {
         return owner;
     }
 
-    public long getUpperTweet()
+    public void setOwner(Long owner)
+    {
+        this.owner = owner;
+    }
+
+    public Long getUpperTweet()
     {
         return upperTweet;
+    }
+
+    public void setUpperTweet(Long upperTweet)
+    {
+        this.upperTweet = upperTweet;
     }
 
     public String getText()
@@ -53,9 +73,19 @@ public class Tweet
         return text;
     }
 
+    public void setText(String text)
+    {
+        this.text = text;
+    }
+
     public String getPicture()
     {
         return base64Picture;
+    }
+
+    public void setPicture(String base64Picture)
+    {
+        this.base64Picture = base64Picture;
     }
 
     public Date getTweetDate()
@@ -63,39 +93,14 @@ public class Tweet
         return tweetDate;
     }
 
-    public boolean isVisible()
+    public void setTweetDate(Date tweetDate)
     {
-        return visible;
+        this.tweetDate = tweetDate;
     }
 
     public List<Long> getComments()
     {
         return this.comments;
-    }
-
-    public List<Long> getUpvotes()
-    {
-        return upvotes;
-    }
-
-    public List<Long> getDownvotes()
-    {
-        return downvotes;
-    }
-
-    public List<Long> getRetweets()
-    {
-        return retweets;
-    }
-
-    public int getReports()
-    {
-        return reports;
-    }
-
-    public void setUpperTweet(long upperTweet)
-    {
-        this.upperTweet = upperTweet;
     }
 
     public void setComments(List<Long> comments)
@@ -106,6 +111,11 @@ public class Tweet
     public void addComment(Tweet comment)
     {
         this.comments.add(comment.getId());
+    }
+
+    public List<Long> getUpvotes()
+    {
+        return upvotes;
     }
 
     public void setUpvotes(List<Long> upvotes)
@@ -123,6 +133,11 @@ public class Tweet
         this.upvotes.remove(user.getId());
     }
 
+    public List<Long> getDownvotes()
+    {
+        return downvotes;
+    }
+
     public void setDownvotes(List<Long> downvotes)
     {
         this.downvotes = downvotes;
@@ -136,6 +151,11 @@ public class Tweet
     public void removeDownvote(User user)
     {
         this.downvotes.remove(user.getId());
+    }
+
+    public List<Long> getRetweets()
+    {
+        return retweets;
     }
 
     public void setRetweets(List<Long> retweets)
@@ -153,9 +173,19 @@ public class Tweet
         this.retweets.remove(user.getId());
     }
 
+    public int getReports()
+    {
+        return reports;
+    }
+
     public void addReport()
     {
         this.reports++;
+    }
+
+    public boolean isVisible()
+    {
+        return visible;
     }
 
     public void deleteTweet()

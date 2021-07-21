@@ -5,41 +5,42 @@ import java.util.List;
 
 public class Chat
 {
-    private final long id;
+    private Long id;
     private String chatName;
-    private final boolean group;
+    private boolean group;
     private List<Long> users = new LinkedList<>();
     private List<Long> messages = new LinkedList<>();
 
-    // Constructor for easy use in ChatsListPaneFXML class
     public Chat()
     {
-        this.id = -1;
+        this.id = -1L;
         this.group = false;
     }
 
     // Constructor for group chats
-    public Chat(long id, User user, String chatName)
+    public Chat(User user, String chatName)
     {
-        this.id = id;
         this.group = true;
         this.chatName = chatName;
         this.users.add(user.getId());
     }
 
     // Constructor for private chats
-    public Chat(long id, User user1, User user2)
+    public Chat(User user1, User user2)
     {
-        this.id = id;
         this.group = false;
         this.chatName = user1.getUsername() + " - " + user2.getUsername();
         this.users.add(user1.getId());
         this.users.add(user2.getId());
     }
 
-    public long getId()
+    public Long getId()
     {
-        return this.id;
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public boolean isGroup()
@@ -47,24 +48,24 @@ public class Chat
         return group;
     }
 
+    public void setGroup(boolean group)
+    {
+        this.group = group;
+    }
+
     public String getChatName()
     {
         return chatName;
     }
 
-    public List<Long> getUsers()
-    {
-        return this.users;
-    }
-
-    public List<Long> getMessages()
-    {
-        return messages;
-    }
-
     public void setChatName(String chatsName)
     {
         this.chatName = chatsName;
+    }
+
+    public List<Long> getUsers()
+    {
+        return this.users;
     }
 
     public void setUsers(List<Long> users)
@@ -78,6 +79,11 @@ public class Chat
         {
             this.users.add(user.getId());
         }
+    }
+
+    public List<Long> getMessages()
+    {
+        return messages;
     }
 
     public void setMessages(List<Long> messages)

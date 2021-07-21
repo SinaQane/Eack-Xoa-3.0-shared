@@ -2,46 +2,66 @@ package model;
 
 public class Notification
 {
-    private final long id;
-    private final long owner;
-    private final long requestFrom;
-    private final String text;
+    private Long id;
+    private Long owner;
+    private Long requestFrom;
+    private String text;
+
+    public Notification() {}
 
     // Constructor for the case this is a request notification
-    public Notification(long id, long owner, long request, String text)
+    public Notification(Long owner, Long request, String text)
     {
-        this.id = id;
         this.owner = owner;
         this.requestFrom = request;
         this.text = text;
     }
 
     // Constructor for the default case
-    public Notification(long id, long owner, String text)
+    public Notification(Long owner, String text)
     {
-        this.id = id;
         this.owner = owner;
-        this.requestFrom = -1;
+        this.requestFrom = -1L;
         this.text = text;
     }
 
-    public long getId()
+    public Long getId()
     {
         return id;
     }
 
-    public long getOwner()
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+
+    public Long getOwner()
     {
         return owner;
     }
 
-    public long getRequestFrom()
+    public void setOwner(Long owner)
+    {
+        this.owner = owner;
+    }
+
+    public Long getRequestFrom()
     {
         return requestFrom;
+    }
+
+    public void setRequestFrom(Long requestFrom)
+    {
+        this.requestFrom = requestFrom;
     }
 
     public String getText()
     {
         return text;
+    }
+
+    public void setText(String text)
+    {
+        this.text = text;
     }
 }

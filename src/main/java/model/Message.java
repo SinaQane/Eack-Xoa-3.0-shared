@@ -6,57 +6,73 @@ import java.util.List;
 
 public class Message
 {
-    private final long id;
+    private Long id;
     private String text;
-    private final long chatId;
-    private final long ownerId;
-    private final int index;
-    private final String base64Picture;
-    private final long messageDateUnix = new Date().getTime();
+    private Long chatId;
+    private Long ownerId;
+    private int index;
+    private String base64Picture;
+    private Long messageDateUnix;
     private List<Long> seenList = new LinkedList<>();
 
     // tweetId is the id of the tweet which this message forwards that (-1 if non-existent)
-    private final long tweetId;
+    private Long tweetId;
+
+    public Message() {}
 
     // Constructor for the case which the message is a dm
-    public Message(long id, Chat chat, User user, String text, String base64Picture)
+    public Message(Chat chat, User user, String text, String base64Picture)
     {
-        this.id = id;
+        tweetId = -1L;
+        this.text = text;
         chatId = chat.getId();
         ownerId = user.getId();
-        tweetId = -1;
         index = chat.getMessages().size();
-        this.text = text;
         this.base64Picture = base64Picture;
+        messageDateUnix = new Date().getTime();
         // TODO chat.addToMessages(this);
     }
 
     // Constructor for the case which the message is a forwarded tweet
-    public Message(long id, Chat chat, User user, Tweet tweet)
+    public Message(Chat chat, User user, Tweet tweet)
     {
-        this.id = id;
-        chatId = chat.getId();
-        ownerId = user.getId();
-        index = chat.getMessages().size();
         text = tweet.getText();
-        base64Picture = tweet.getPicture();
+        ownerId = user.getId();
         tweetId = tweet.getId();
+        chatId = chat.getId();
+        index = chat.getMessages().size();
+        base64Picture = tweet.getPicture();
+        messageDateUnix = new Date().getTime();
         // TODO chat.addToMessages(this);
     }
 
-    public long getId()
+    public Long getId()
     {
         return id;
     }
 
-    public long getChatId()
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getChatId()
     {
         return chatId;
     }
 
-    public long getOwnerId()
+    public void setChatId(Long chatId)
+    {
+        this.chatId = chatId;
+    }
+
+    public Long getOwnerId()
     {
         return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId)
+    {
+        this.ownerId = ownerId;
     }
 
     public long getTweetId()
@@ -64,9 +80,19 @@ public class Message
         return tweetId;
     }
 
+    public void setTweetId(Long tweetId)
+    {
+        this.tweetId = tweetId;
+    }
+
     public int getIndex()
     {
         return index;
+    }
+
+    public void setIndex(int index)
+    {
+        this.index = index;
     }
 
     public String getText()
@@ -74,14 +100,28 @@ public class Message
         return text;
     }
 
+    public void setText(String text) {
+        this.text = text;
+    }
+
     public String getPicture()
     {
         return base64Picture;
     }
 
+    public void setPicture(String base64Picture)
+    {
+        this.base64Picture = base64Picture;
+    }
+
     public long getMessageDate()
     {
         return messageDateUnix;
+    }
+
+    public void setMessageDate(Long messageDateUnix)
+    {
+        this.messageDateUnix = messageDateUnix;
     }
 
     public List<Long> getSeenList()

@@ -5,19 +5,25 @@ import java.util.List;
 
 public class Group
 {
-    private final long id;
+    private Long id;
     private String title;
     private List<Long> members = new LinkedList<>();
 
-    public Group(long id, String title)
+    public Group() {}
+
+    public Group(String title)
     {
-        this.id = id;
         this.title = title;
     }
 
-    public long getId()
+    public Long getId()
     {
         return id;
+    }
+
+    public void setId(Long id)
+    {
+        this.id = id;
     }
 
     public String getTitle()
@@ -25,14 +31,19 @@ public class Group
         return title;
     }
 
-    public List<Long> getMembers()
+    public void setTitle(String title)
     {
-        return members;
+        this.title = title;
     }
 
     public void editTitle(String newTitle)
     {
         title = newTitle;
+    }
+
+    public List<Long> getMembers()
+    {
+        return members;
     }
 
     public void setMembers(List<Long> members)
