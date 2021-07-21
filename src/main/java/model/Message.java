@@ -6,30 +6,19 @@ import java.util.List;
 
 public class Message
 {
-    // id is the id of the message in the database (unique)
     private final long id;
-
-    // chatId is the id of the chatroom which this message belongs to
+    private String text;
     private final long chatId;
-
-    // ownerId is the id of the owner of the message
     private final long ownerId;
+    private final int index;
+    private final String base64Picture;
+    private final long messageDateUnix = new Date().getTime();
+    private List<Long> seenList = new LinkedList<>();
 
     // tweetId is the id of the tweet which this message forwards that (-1 if non-existent)
     private final long tweetId;
 
-    // index is the index of message in the sorted messages of the chatroom
-    private final int index;
-
-    // Message info
-
-    private String text;
-    private final String base64Picture;
-    private final long messageDateUnix = new Date().getTime();
-    private final List<Long> seenList = new LinkedList<>();
-
     // Constructor for the case which the message is a dm
-
     public Message(long id, Chat chat, User user, String text, String base64Picture)
     {
         this.id = id;
@@ -43,7 +32,6 @@ public class Message
     }
 
     // Constructor for the case which the message is a forwarded tweet
-
     public Message(long id, Chat chat, User user, Tweet tweet)
     {
         this.id = id;
@@ -55,8 +43,6 @@ public class Message
         tweetId = tweet.getId();
         // TODO chat.addToMessages(this);
     }
-
-    // Getters
 
     public long getId()
     {
@@ -103,7 +89,10 @@ public class Message
         return seenList;
     }
 
-    // Setters
+    public void setSeenList(List<Long> seenList)
+    {
+        this.seenList = seenList;
+    }
 
     public void addToSeen(User user)
     {

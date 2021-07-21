@@ -7,35 +7,23 @@ import java.util.List;
 
 public class Tweet
 {
-    // Tweet info
-
-    // id is the id of the tweet in the database (unique)
     private final long id;
-
-    // owner is the id of the tweet's owner in the database
     private final long owner;
-
-    // upperTweetId is the id of the tweet's parent tweet (-1 if non-existent)
-    private long upperTweet = -1;
-
-    // base64Picture is the picture linked to the tweet converted into base64 binary form
-    private final String base64Picture;
-
-    // visible indicates that is this tweet deleted or not
-    private boolean visible = true;
-
+    private int reports = 0;
     private final String text;
     private final Date tweetDate = new Date();
 
-    // Interactions of users with this tweet
+    // upperTweetId is the id of the tweet's parent tweet (-1 if non-existent)
+    private long upperTweet = -1;
+    // base64Picture is the picture linked to the tweet converted into base64 binary form
+    private final String base64Picture;
+    // visible indicates that is this tweet deleted or not
+    private boolean visible = true;
 
-    private final List<Long> comments = new LinkedList<>();
-    private final List<Long> upvotes = new ArrayList<>();
-    private final List<Long> downvotes = new ArrayList<>();
-    private final List<Long> retweets = new ArrayList<>();
-    private int reports = 0;
-
-    // Constructor
+    private List<Long> comments = new LinkedList<>();
+    private List<Long> upvotes = new ArrayList<>();
+    private List<Long> downvotes = new ArrayList<>();
+    private List<Long> retweets = new ArrayList<>();
 
     public Tweet(long id, long owner, String text, String base64Picture)
     {
@@ -44,8 +32,6 @@ public class Tweet
         this.text = text;
         this.base64Picture = base64Picture;
     }
-
-    // Getters
 
     public long getId()
     {
@@ -107,16 +93,24 @@ public class Tweet
         return reports;
     }
 
-    // Setters
-
     public void setUpperTweet(long upperTweet)
     {
         this.upperTweet = upperTweet;
     }
 
+    public void setComments(List<Long> comments)
+    {
+        this.comments = comments;
+    }
+
     public void addComment(Tweet comment)
     {
         this.comments.add(comment.getId());
+    }
+
+    public void setUpvotes(List<Long> upvotes)
+    {
+        this.upvotes = upvotes;
     }
 
     public void addUpvote(User user)
@@ -129,6 +123,11 @@ public class Tweet
         this.upvotes.remove(user.getId());
     }
 
+    public void setDownvotes(List<Long> downvotes)
+    {
+        this.downvotes = downvotes;
+    }
+
     public void addDownvote(User user)
     {
         this.downvotes.add(user.getId());
@@ -137,6 +136,11 @@ public class Tweet
     public void removeDownvote(User user)
     {
         this.downvotes.remove(user.getId());
+    }
+
+    public void setRetweets(List<Long> retweets)
+    {
+        this.retweets = retweets;
     }
 
     public void addRetweet(User user)

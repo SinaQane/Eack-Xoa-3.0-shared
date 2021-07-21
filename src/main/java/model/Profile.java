@@ -6,53 +6,41 @@ import java.util.List;
 
 public class Profile
 {
-    // id is the id of the user in the database (unique)
     private final long id;
+    private Date lastSeen = new Date();
+
+    private List<Long> followers = new LinkedList<>();
+    private List<Long> followings = new LinkedList<>();
+    private List<Long> blocked = new LinkedList<>();
+    private List<Long> muted = new LinkedList<>();
+    private List<Long> requests = new LinkedList<>();
+    private List<Long> pending = new LinkedList<>();
+
+    private List<Long> userTweets = new LinkedList<>();
+    private List<Long> retweetedTweets = new LinkedList<>();
+    private List<Long> upvotedTweets = new LinkedList<>();
+    private List<Long> downvotedTweets = new LinkedList<>();
+    private List<Long> reportedTweets = new LinkedList<>();
+    private List<Long> savedTweets = new LinkedList<>();
+
+    private List<Long> notifications = new LinkedList<>();
+    private List<Long> groups = new LinkedList<>();
+    private List<Long> chats = new LinkedList<>();
 
     // base64Picture is the profile picture converted into base64 binary form
     private String base64Picture = "";
 
-    private Date lastSeen = new Date();
-
-    // Interactions with other users
-    private final List<Long> followers = new LinkedList<>();
-    private final List<Long> followings = new LinkedList<>();
-    private final List<Long> blocked = new LinkedList<>();
-    private final List<Long> muted = new LinkedList<>();
-    private final List<Long> requests = new LinkedList<>();
-    private final List<Long> pending = new LinkedList<>();
-
-    // Tweets
-    private final List<Long> userTweets = new LinkedList<>();
-    private final List<Long> retweetedTweets = new LinkedList<>();
-    private final List<Long> upvotedTweets = new LinkedList<>();
-    private final List<Long> downvotedTweets = new LinkedList<>();
-    private final List<Long> reportedTweets = new LinkedList<>();
-    private final List<Long> savedTweets = new LinkedList<>();
-
-    private final List<Long> notifications = new LinkedList<>();
-    private final List<Long> groups = new LinkedList<>();
-    private final List<Long> chats = new LinkedList<>();
-
-    // Privacy stuff
-
     // privateState is "true" if the page is private and "false" if if it's public.
     private boolean privateState = false;
-
     // infoState is for Email, Phone number and Birthdate. "true" for public and "false" for private.
     private boolean infoState = false;
-
     // lastSeenState is "0" for no one, "1" for followings only and "2" for everyone.
     private int lastSeenState = 1;
-
-    // Constructor
 
     Profile(long id)
     {
         this.id = id;
     }
-
-    // Getters
 
     public long getId()
     {
@@ -159,8 +147,6 @@ public class Profile
         return savedTweets;
     }
 
-    // Setters
-
     public void setPicture(String base64Picture)
     {
         this.base64Picture = base64Picture;
@@ -186,6 +172,11 @@ public class Profile
         this.lastSeen = lastSeen;
     }
 
+    public void setFollowers(List<Long> followers)
+    {
+        this.followers = followers;
+    }
+
     public void addToFollowers(User user)
     {
         followers.add(user.getId());
@@ -194,6 +185,11 @@ public class Profile
     public void removeFromFollowers(User user)
     {
         followers.remove(user.getId());
+    }
+
+    public void setFollowings(List<Long> followings)
+    {
+        this.followings = followings;
     }
 
     public void addToFollowings(User user)
@@ -206,6 +202,11 @@ public class Profile
         followings.remove(user.getId());
     }
 
+    public void setBlocked(List<Long> blocked)
+    {
+        this.blocked = blocked;
+    }
+
     public void addToBlocked(User user)
     {
         blocked.add(user.getId());
@@ -214,6 +215,11 @@ public class Profile
     public void removeFromBlocked(User user)
     {
         blocked.remove(user.getId());
+    }
+
+    public void setMuted(List<Long> muted)
+    {
+        this.muted = muted;
     }
 
     public void addToMuted(User user)
@@ -226,6 +232,11 @@ public class Profile
         muted.remove(user.getId());
     }
 
+    public void setRequests(List<Long> requests)
+    {
+        this.requests = requests;
+    }
+
     public void addToRequests(User user)
     {
         requests.add(user.getId());
@@ -234,6 +245,11 @@ public class Profile
     public void removeFromRequests(User user)
     {
         requests.remove(user.getId());
+    }
+
+    public void setPending(List<Long> pending)
+    {
+        this.pending = pending;
     }
 
     public void addToPending(User user)
@@ -246,9 +262,19 @@ public class Profile
         pending.remove(user.getId());
     }
 
+    public void setUserTweets(List<Long> userTweets)
+    {
+        this.userTweets = userTweets;
+    }
+
     public void addToUserTweets(Tweet tweet)
     {
         userTweets.add(tweet.getId());
+    }
+
+    public void setRetweetedTweets(List<Long> retweetedTweets)
+    {
+        this.retweetedTweets = retweetedTweets;
     }
 
     public void addToRetweetedTweets(Tweet tweet)
@@ -261,6 +287,11 @@ public class Profile
         retweetedTweets.remove(tweet.getId());
     }
 
+    public void setUpvotedTweets(List<Long> upvotedTweets)
+    {
+        this.upvotedTweets = upvotedTweets;
+    }
+
     public void addToUpvotedTweets(Tweet tweet)
     {
         upvotedTweets.add(tweet.getId());
@@ -269,6 +300,11 @@ public class Profile
     public void removeFromUpvotedTweets(Tweet tweet)
     {
         upvotedTweets.remove(tweet.getId());
+    }
+
+    public void setDownvotedTweets(List<Long> downvotedTweets)
+    {
+        this.downvotedTweets = downvotedTweets;
     }
 
     public void addToDownvotedTweets(Tweet tweet)
@@ -281,6 +317,11 @@ public class Profile
         downvotedTweets.remove(tweet.getId());
     }
 
+    public void setReportedTweets(List<Long> reportedTweets)
+    {
+        this.reportedTweets = reportedTweets;
+    }
+
     public void addToReportedTweets(Tweet tweet)
     {
         reportedTweets.add(tweet.getId());
@@ -291,14 +332,39 @@ public class Profile
         savedTweets.add(tweet.getId());
     }
 
+    public void setSavedTweets(List<Long> savedTweets)
+    {
+        this.savedTweets = savedTweets;
+    }
+
     public void removeFromSavedTweets(Tweet tweet)
     {
         savedTweets.remove(tweet.getId());
     }
 
+    public void setNotifications(List<Long> notifications)
+    {
+        this.notifications = notifications;
+    }
+
     public void addToNotifications(Notification notification)
     {
         notifications.add(notification.getId());
+    }
+
+    public void setGroups(List<Long> groups)
+    {
+        this.groups = groups;
+    }
+
+    public void addToGroups(Group group)
+    {
+        groups.add(group.getId());
+    }
+
+    public void setChats(List<Long> chats)
+    {
+        this.chats = chats;
     }
 
     public void addToChats(Chat chat)

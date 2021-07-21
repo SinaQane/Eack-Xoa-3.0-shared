@@ -4,11 +4,7 @@ import java.util.Date;
 
 public class User
 {
-    // User's info
-
-    // id is the id of the user in the database (unique)
     private final Long id;
-
     private String username;
     private String password;
     private String name;
@@ -17,15 +13,10 @@ public class User
     private String bio;
     private Date birthDate;
 
-    // Page info
-
     // isActive is "true" if the page is active and "false" if it's deactivated.
     private boolean isActive = true;
-
     // isDeleted is "false" in default state and "true" id the user deleted this account.
     private boolean isDeleted = false;
-
-    // Constructor
 
     public User(long id, String username, String password)
     {
@@ -34,8 +25,6 @@ public class User
         this.password = password;
         // TODO new Profile(this.id);
     }
-
-    // Getter methods
 
     public Long getId()
     {
@@ -86,8 +75,6 @@ public class User
     {
         return this.isDeleted;
     }
-
-    // Setter methods
 
     public void setUsername(String username)
     {

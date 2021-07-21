@@ -5,23 +5,15 @@ import java.util.List;
 
 public class Group
 {
-    // id is the id of the group in the database (unique)
     private final long id;
-
-    // Group's title is a unique string, but not constant
     private String title;
-
-    private final List<Long> members = new LinkedList<>();
-
-    // Constructor
+    private List<Long> members = new LinkedList<>();
 
     public Group(long id, String title)
     {
         this.id = id;
         this.title = title;
     }
-
-    // Getters
 
     public long getId()
     {
@@ -38,11 +30,14 @@ public class Group
         return members;
     }
 
-    // Setters
-
     public void editTitle(String newTitle)
     {
         title = newTitle;
+    }
+
+    public void setMembers(List<Long> members)
+    {
+        this.members = members;
     }
 
     public void addToGroup(User user)

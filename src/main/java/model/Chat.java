@@ -5,18 +5,13 @@ import java.util.List;
 
 public class Chat
 {
-    // id is the id of the chatroom in the database (unique)
     private final long id;
-
-    // Chatroom info
-
     private String chatName;
     private final boolean group;
-    private final List<Long> users = new LinkedList<>();
-    private final List<Long> messages = new LinkedList<>();
+    private List<Long> users = new LinkedList<>();
+    private List<Long> messages = new LinkedList<>();
 
     // Constructor for easy use in ChatsListPaneFXML class
-
     public Chat()
     {
         this.id = -1;
@@ -24,7 +19,6 @@ public class Chat
     }
 
     // Constructor for group chats
-
     public Chat(long id, User user, String chatName)
     {
         this.id = id;
@@ -34,7 +28,6 @@ public class Chat
     }
 
     // Constructor for private chats
-
     public Chat(long id, User user1, User user2)
     {
         this.id = id;
@@ -43,8 +36,6 @@ public class Chat
         this.users.add(user1.getId());
         this.users.add(user2.getId());
     }
-
-    // Getters
 
     public long getId()
     {
@@ -71,11 +62,14 @@ public class Chat
         return messages;
     }
 
-    // Setters
-
     public void setChatName(String chatsName)
     {
         this.chatName = chatsName;
+    }
+
+    public void setUsers(List<Long> users)
+    {
+        this.users = users;
     }
 
     public void addToUsers(User user)
@@ -84,6 +78,11 @@ public class Chat
         {
             this.users.add(user.getId());
         }
+    }
+
+    public void setMessages(List<Long> messages)
+    {
+        this.messages = messages;
     }
 
     public void addToMessages(Message message)
