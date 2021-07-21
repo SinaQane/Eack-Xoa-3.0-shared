@@ -22,7 +22,12 @@ public class Config extends Properties
         }
     }
 
-    public <E> Optional<E> getProperty(Class<E> c, String propertyName)
+    public <E> E getProperty(Class<E> c, String propertyName)
+    {
+        return getObject(c, getProperty(propertyName));
+    }
+
+    public <E> Optional<E> getOptionalProperty(Class<E> c, String propertyName)
     {
         if (containsKey(propertyName))
         {
@@ -32,11 +37,6 @@ public class Config extends Properties
         {
             return Optional.empty();
         }
-    }
-
-    public <E> E getExistingProperty(Class<E> c, String propertyName)
-    {
-        return getObject(c, getProperty(propertyName));
     }
 
     private <E> E getObject(Class<E> c, String value) {
