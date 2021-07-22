@@ -107,6 +107,16 @@ public class User
         this.birthDate = birthDate;
     }
 
+    public boolean isActive()
+    {
+        return isActive;
+    }
+
+    public void setActive(boolean active)
+    {
+        isActive = active;
+    }
+
     public boolean isDeactivated()
     {
         return !isActive;
@@ -124,7 +134,12 @@ public class User
 
     public boolean isDeleted()
     {
-        return this.isDeleted;
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean isDeleted)
+    {
+        this.isDeleted = isDeleted;
     }
 
     public void deleteAccount()
