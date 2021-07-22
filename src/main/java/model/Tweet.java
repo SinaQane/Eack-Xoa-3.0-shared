@@ -178,6 +178,11 @@ public class Tweet
         return reports;
     }
 
+    public void setReports(int reports)
+    {
+        this.reports = reports;
+    }
+
     public void addReport()
     {
         this.reports++;
@@ -186,6 +191,11 @@ public class Tweet
     public boolean isVisible()
     {
         return visible;
+    }
+
+    public void setVisible(boolean visible)
+    {
+        this.visible = visible;
     }
 
     public void deleteTweet()
