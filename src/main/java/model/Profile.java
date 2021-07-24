@@ -364,6 +364,11 @@ public class Profile
         groups.add(group.getId());
     }
 
+    public void removeGroup(int index)
+    {
+        groups.remove(index);
+    }
+
     public List<Long> getChats()
     {
         return chats;
@@ -378,66 +383,4 @@ public class Profile
     {
         this.chats.add(chat.getId());
     }
-
-    /* TODO without db
-
-    public Group getGroup(String groupName)
-    {
-        for (Group group : groups)
-        {
-            if (group.getTitle().equals(groupName))
-            {
-                return group;
-            }
-        }
-
-        return null;
-    }
-
-    public void addToGroups(Group group)
-    {
-        int index = -1;
-        for (int i = 0; i < groups.size(); i++)
-        {
-            if (groups.get(i).getTitle().equals(group.getTitle()))
-            {
-                index = i;
-            }
-        }
-        if(index != -1)
-        {
-            groups.remove(index);
-        }
-        groups.add(group);
-    }
-
-    A HashMap that links every tweet to 2 variables:
-    1. A bit that shows that is this tweet a retweet ("1") or the user's tweet ("0").
-    2. A long that shows the time that this tweet was tweeted, in milliseconds.
-
-    public List<String[]> getHomePageTweets()
-    {
-        HashMap<String[], Long> homePageTweets = new HashMap<>();
-
-        for (String userTweet : userTweets)
-        {
-            Tweet tweet = TweetDB.getTweetDB().get(userTweet);
-            homePageTweets.put(new String[]{userTweet, "0"}, tweet.getTweetDate().getTime());
-        }
-
-        for (String retweetedTweet : retweetedTweets)
-        {
-            Tweet tweet = TweetDB.getTweetDB().get(retweetedTweet);
-            homePageTweets.put(new String[]{retweetedTweet, "1"}, tweet.getTweetDate().getTime());
-        }
-
-        List<String[]> result = new LinkedList<>();
-
-        for (Map.Entry<String[], Long> e : HashMapUtil.sortByValue(homePageTweets).entrySet())
-        {
-            result.add(0, e.getKey());
-        }
-
-        return result;
-    }*/
 }

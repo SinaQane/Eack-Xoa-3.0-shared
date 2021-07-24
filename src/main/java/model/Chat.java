@@ -95,28 +95,4 @@ public class Chat
     {
         messages.add(message.getId());
     }
-
-    /* TODO without db
-
-    public long getLastMessageTime()
-    {
-        if (this.messages.size() != 0)
-        {
-            return this.messages.get(this.messages.size() - 1).getMessageDate();
-        }
-        return 0;
-    }
-
-    public int getUnseenCount(User user)
-    {
-        int cnt = 0;
-        for (Message message : this.messages)
-        {
-            if (!message.getSeenList().contains(user.getId()))
-            {
-                cnt++;
-            }
-        }
-        return cnt;
-    }*/
 }
