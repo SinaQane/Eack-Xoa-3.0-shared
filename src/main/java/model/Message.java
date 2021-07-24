@@ -16,9 +16,9 @@ public class Message
     private List<Long> seenList = new LinkedList<>();
 
     // For private chats (phase-3 shit)
-    private boolean sent;
-    private boolean received;
-    private boolean seen;
+    private boolean sent = false;
+    private boolean received = false;
+    private boolean seen = false;
 
     // tweetId is the id of the tweet which this message forwards that (-1 if non-existent)
     private Long tweetId;
