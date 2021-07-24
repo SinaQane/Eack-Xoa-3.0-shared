@@ -15,6 +15,11 @@ public class Message
     private Long messageDateUnix;
     private List<Long> seenList = new LinkedList<>();
 
+    // For private chats (phase-3 shit)
+    private boolean sent;
+    private boolean received;
+    private boolean seen;
+
     // tweetId is the id of the tweet which this message forwards that (-1 if non-existent)
     private Long tweetId;
 
@@ -100,8 +105,19 @@ public class Message
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(String text)
+    {
         this.text = text;
+    }
+
+    public void edit(String text)
+    {
+        this.text = "(edited) " + text;
+    }
+
+    public void delete()
+    {
+        text = "*this message was deleted*";
     }
 
     public String getPicture()
@@ -142,13 +158,35 @@ public class Message
         }
     }
 
-    public void edit(String text)
+    // New private chat shit
+
+    public boolean isSent()
     {
-        this.text = "(edited) " + text;
+        return sent;
     }
 
-    public void delete()
+    public void setSent(boolean sent)
     {
-        text = "*this message was deleted*";
+        this.sent = sent;
+    }
+
+    public boolean isReceived()
+    {
+        return received;
+    }
+
+    public void setReceived(boolean received)
+    {
+        this.received = received;
+    }
+
+    public boolean isSeen()
+    {
+        return seen;
+    }
+
+    public void setSeen(boolean seen)
+    {
+        this.seen = seen;
     }
 }
