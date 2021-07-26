@@ -1,6 +1,7 @@
 package response;
 
 import exceptions.DatabaseError;
+import exceptions.Unauthenticated;
 import exceptions.authentication.LoginFailed;
 import exceptions.authentication.SignUpFailed;
 import exceptions.settings.SettingsFailed;
@@ -14,7 +15,13 @@ public interface ResponseVisitor
 
     void signUp(User user, SignUpFailed err);
 
-    void settings(boolean online, SettingsFailed err);
+    // Settings page event responses
+
+    void settings(boolean online, SettingsFailed err, Unauthenticated authErr);
+
+    void deleteAccount(boolean online, Unauthenticated err);
+
+    void deactivate(boolean online, Unauthenticated err);
 
     // Database event responses
 

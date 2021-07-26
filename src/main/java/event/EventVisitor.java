@@ -15,7 +15,11 @@ public interface EventVisitor
 
     // Settings page events
 
-    Response settings(SettingsForm form, boolean online);
+    Response settings(SettingsForm form, Long userId, String authToken, boolean online);
+
+    Response deleteAccount(long userId, String authToken, boolean online);
+
+    Response deactivate(long userId, String authToken, boolean online);
 
     // Database events
 

@@ -4,24 +4,21 @@ import event.Event;
 import event.EventVisitor;
 import response.Response;
 
-public class SettingsEvent extends Event
+public class DeleteAccountEvent extends Event
 {
-    private final SettingsForm form;
     private final boolean online;
     private final long userId;
     private String authToken;
 
-    public SettingsEvent(SettingsForm form, Long userId, String authToken)
+    public DeleteAccountEvent(Long userId, String authToken)
     {
-        this.form = form;
         this.online = true;
         this.userId = userId;
         this.authToken = authToken;
     }
 
-    public SettingsEvent(SettingsForm form, Long userId)
+    public DeleteAccountEvent(Long userId)
     {
-        this.form = form;
         this.online = false;
         this.userId = userId;
     }
@@ -34,6 +31,6 @@ public class SettingsEvent extends Event
     @Override
     public Response visit(EventVisitor eventVisitor)
     {
-        return eventVisitor.settings(form, userId, authToken, online);
+        return eventVisitor.deleteAccount(userId, authToken, online);
     }
 }
