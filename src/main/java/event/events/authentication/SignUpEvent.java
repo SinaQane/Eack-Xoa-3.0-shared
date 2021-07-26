@@ -2,23 +2,20 @@ package event.events.authentication;
 
 import event.Event;
 import event.EventVisitor;
-import model.User;
 import response.Response;
 
 public class SignUpEvent extends Event
 {
-    private final User user;
-    private final String pic;
+    private final SignUpForm form;
 
-    public SignUpEvent(User user, String pic)
+    public SignUpEvent(SignUpForm form)
     {
-        this.user = user;
-        this.pic = pic;
+        this.form = form;
     }
 
     @Override
     public Response visit(EventVisitor eventVisitor)
     {
-        return eventVisitor.signUp(user, pic);
+        return eventVisitor.signUp(form);
     }
 }

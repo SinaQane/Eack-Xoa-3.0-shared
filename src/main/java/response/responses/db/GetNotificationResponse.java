@@ -1,5 +1,6 @@
 package response.responses.db;
 
+import exceptions.DatabaseError;
 import model.Notification;
 import response.Response;
 import response.ResponseVisitor;
@@ -7,9 +8,9 @@ import response.ResponseVisitor;
 public class GetNotificationResponse extends Response
 {
     private final Notification notification;
-    private final Exception err;
+    private final DatabaseError err;
 
-    public GetNotificationResponse(Notification notification, Exception err)
+    public GetNotificationResponse(Notification notification, DatabaseError err)
     {
         this.notification = notification;
         this.err = err;

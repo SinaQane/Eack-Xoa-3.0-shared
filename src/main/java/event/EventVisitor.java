@@ -1,5 +1,7 @@
 package event;
 
+import event.events.authentication.LoginForm;
+import event.events.authentication.SignUpForm;
 import model.User;
 import response.Response;
 
@@ -7,9 +9,9 @@ public interface EventVisitor
 {
     // Authentication events
 
-    Response login(User user);
+    Response login(LoginForm form);
 
-    Response signUp(User user, String pic);
+    Response signUp(SignUpForm form);
 
     // Database events
 

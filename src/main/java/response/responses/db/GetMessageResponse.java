@@ -1,5 +1,6 @@
 package response.responses.db;
 
+import exceptions.DatabaseError;
 import model.Message;
 import response.Response;
 import response.ResponseVisitor;
@@ -7,9 +8,9 @@ import response.ResponseVisitor;
 public class GetMessageResponse extends Response
 {
     private final Message message;
-    private final Exception err;
+    private final DatabaseError err;
 
-    public GetMessageResponse(Message message, Exception err)
+    public GetMessageResponse(Message message, DatabaseError err)
     {
         this.message = message;
         this.err = err;

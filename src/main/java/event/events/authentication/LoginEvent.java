@@ -7,16 +7,16 @@ import response.Response;
 
 public class LoginEvent extends Event
 {
-    private final User user;
+    private final LoginForm form;
 
-    public LoginEvent(User user)
+    public LoginEvent(LoginForm form)
     {
-        this.user = user;
+        this.form = form;
     }
 
     @Override
     public Response visit(EventVisitor eventVisitor)
     {
-        return eventVisitor.login(user);
+        return eventVisitor.login(form);
     }
 }

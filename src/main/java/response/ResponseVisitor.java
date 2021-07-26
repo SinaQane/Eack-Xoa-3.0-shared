@@ -1,26 +1,29 @@
 package response;
 
+import exceptions.DatabaseError;
+import exceptions.authentication.LoginFailed;
+import exceptions.authentication.SignUpFailed;
 import model.*;
 
 public interface ResponseVisitor
 {
     // Authentication event responses
 
-    void login(User user, Exception err);
+    void login(User user, LoginFailed err);
 
-    void signUp(User user, Exception err);
+    void signUp(User user, SignUpFailed err);
 
     // Database event responses
 
-    void getChat(Chat chat, Exception err);
+    void getChat(Chat chat, DatabaseError err);
 
-    void getGroup(Group group, Exception err);
+    void getGroup(Group group, DatabaseError err);
 
-    void getMessage(Message message, Exception err);
+    void getMessage(Message message, DatabaseError err);
 
-    void getNotification(Notification notification, Exception err);
+    void getNotification(Notification notification, DatabaseError err);
 
-    void getTweet(Tweet tweet, Exception err);
+    void getTweet(Tweet tweet, DatabaseError err);
 
-    void getUser(User user, Profile profile, Exception err);
+    void getUser(User user, Profile profile, DatabaseError err);
 }
