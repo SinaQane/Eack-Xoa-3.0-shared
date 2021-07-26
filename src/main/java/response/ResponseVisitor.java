@@ -3,6 +3,7 @@ package response;
 import exceptions.DatabaseError;
 import exceptions.authentication.LoginFailed;
 import exceptions.authentication.SignUpFailed;
+import exceptions.settings.SettingsFailed;
 import model.*;
 
 public interface ResponseVisitor
@@ -12,6 +13,8 @@ public interface ResponseVisitor
     void login(User user, LoginFailed err);
 
     void signUp(User user, SignUpFailed err);
+
+    void settings(boolean online, SettingsFailed err);
 
     // Database event responses
 

@@ -2,7 +2,6 @@ package event.events.authentication;
 
 import event.Event;
 import event.EventVisitor;
-import model.User;
 import response.Response;
 
 public class LoginEvent extends Event

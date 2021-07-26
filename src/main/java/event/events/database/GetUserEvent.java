@@ -1,4 +1,4 @@
-package event.events.db;
+package event.events.database;
 
 import event.Event;
 import event.EventVisitor;

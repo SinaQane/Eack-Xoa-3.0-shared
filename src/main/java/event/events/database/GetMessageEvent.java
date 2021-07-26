@@ -1,14 +1,14 @@
-package event.events.db;
+package event.events.database;
 
 import event.Event;
 import event.EventVisitor;
 import response.Response;
 
-public class GetNotificationEvent extends Event
+public class GetMessageEvent extends Event
 {
     private final long id;
 
-    public GetNotificationEvent(long id)
+    public GetMessageEvent(long id)
     {
         this.id = id;
     }
@@ -16,6 +16,6 @@ public class GetNotificationEvent extends Event
     @Override
     public Response visit(EventVisitor eventVisitor)
     {
-        return eventVisitor.getNotification(id);
+        return eventVisitor.getMessage(id);
     }
 }

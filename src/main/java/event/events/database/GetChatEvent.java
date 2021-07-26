@@ -1,14 +1,14 @@
-package event.events.db;
+package event.events.database;
 
 import event.Event;
 import event.EventVisitor;
 import response.Response;
 
-public class GetGroupEvent extends Event
+public class GetChatEvent extends Event
 {
     private final long id;
 
-    public GetGroupEvent(long id)
+    public GetChatEvent(long id)
     {
         this.id = id;
     }
@@ -16,6 +16,6 @@ public class GetGroupEvent extends Event
     @Override
     public Response visit(EventVisitor eventVisitor)
     {
-        return eventVisitor.getGroup(id);
+        return eventVisitor.getChat(id);
     }
 }

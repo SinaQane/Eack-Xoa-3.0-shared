@@ -2,7 +2,7 @@ package event;
 
 import event.events.authentication.LoginForm;
 import event.events.authentication.SignUpForm;
-import model.User;
+import event.events.settings.SettingsForm;
 import response.Response;
 
 public interface EventVisitor
@@ -12,6 +12,10 @@ public interface EventVisitor
     Response login(LoginForm form);
 
     Response signUp(SignUpForm form);
+
+    // Settings page events
+
+    Response settings(SettingsForm form, boolean online);
 
     // Database events
 

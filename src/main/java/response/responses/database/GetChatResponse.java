@@ -1,4 +1,4 @@
-package response.responses.db;
+package response.responses.database;
 
 import exceptions.DatabaseError;
 import model.Chat;
