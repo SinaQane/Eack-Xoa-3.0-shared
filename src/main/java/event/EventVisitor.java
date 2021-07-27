@@ -11,6 +11,8 @@ public interface EventVisitor
 
     Response login(LoginForm form);
 
+    Response offlineLogin(long userId);
+
     Response signUp(SignUpForm form);
 
     // Settings page events

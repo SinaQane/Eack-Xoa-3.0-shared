@@ -11,9 +11,11 @@ public interface ResponseVisitor
 {
     // Authentication event responses
 
-    void login(User user, LoginFailed err);
+    void login(User user, String authToken, LoginFailed err);
 
-    void signUp(User user, SignUpFailed err);
+    void offlineLogin(User user, String authToken);
+
+    void signUp(User user, String authToken, SignUpFailed err);
 
     // Settings page event responses
 

@@ -8,10 +8,12 @@ import response.ResponseVisitor;
 public class SignUpResponse extends Response
 {
     private final User user;
+    private final String authToken;
     private final SignUpFailed err;
 
-    public SignUpResponse(User user, SignUpFailed err)
+    public SignUpResponse(User user, String authToken, SignUpFailed err)
     {
+        this.authToken = authToken;
         this.user = user;
         this.err = err;
     }
@@ -19,6 +21,6 @@ public class SignUpResponse extends Response
     @Override
     public void visit(ResponseVisitor responseVisitor)
     {
-        responseVisitor.signUp(user, err);
+        responseVisitor.signUp(user, authToken, err);
     }
 }
