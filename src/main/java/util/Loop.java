@@ -2,12 +2,12 @@ package util;
 
 public class Loop
 {
-    private final int fps;
+    private final double fps;
     protected Thread thread;
     private final Runnable updatable;
     private volatile boolean running;
 
-    public Loop(int fps, Runnable updatable)
+    public Loop(double fps, Runnable updatable)
     {
         this.fps = fps;
         this.updatable = updatable;
@@ -47,7 +47,7 @@ public class Loop
     private void run()
     {
         long lastCycleTime = System.nanoTime();
-        int nanosecondsPerUpdate = 1000000000 / fps;
+        double nanosecondsPerUpdate = 1000000000 / fps;
         double delta = 0;
         while (running)
         {

@@ -9,22 +9,6 @@ import model.*;
 
 public interface ResponseVisitor
 {
-    // Authentication event responses
-
-    void login(User user, String authToken, LoginFailed err);
-
-    void offlineLogin(User user, String authToken);
-
-    void signUp(User user, String authToken, SignUpFailed err);
-
-    // Settings page event responses
-
-    void settings(boolean online, SettingsFailed err, Unauthenticated authErr);
-
-    void deleteAccount(boolean online, Unauthenticated err);
-
-    void deactivate(boolean online, Unauthenticated err);
-
     // Database event responses
 
     void getChat(Chat chat, DatabaseError err);
@@ -38,4 +22,32 @@ public interface ResponseVisitor
     void getTweet(Tweet tweet, DatabaseError err);
 
     void getUser(User user, Profile profile, DatabaseError err);
+
+    // Authentication event responses
+
+    void login(User user, String authToken, LoginFailed err);
+
+    void offlineLogin(User user, String authToken);
+
+    void signUp(User user, String authToken, SignUpFailed err);
+
+    // General event responses
+
+    void sendTweet(Unauthenticated err);
+
+    // Settings page event responses
+
+    void settings(boolean online, SettingsFailed err, Unauthenticated authErr);
+
+    void deleteAccount(boolean online, Unauthenticated err);
+
+    void deactivate(boolean online, Unauthenticated err);
+
+    // Profile page event responses
+
+    void userInteraction(Unauthenticated err);
+
+    // Tweet event responses
+
+    void tweetInteraction(Unauthenticated err);
 }
