@@ -2,11 +2,14 @@ package event;
 
 import event.events.authentication.LoginForm;
 import event.events.authentication.SignUpForm;
+import event.events.general.SendTweetForm;
 import event.events.settings.SettingsForm;
 import response.Response;
 
 public interface EventVisitor
 {
+    Response ping(String ping);
+
     // Database events
 
     Response getChat(long id);
@@ -29,9 +32,11 @@ public interface EventVisitor
 
     Response signUp(SignUpForm form);
 
+    Response logout(long userId, String authToken);
+
     // General events
 
-    Response sendTweet(long userId, long upperTweet, String tweet, String picture, String authToken);
+    Response sendTweet(SendTweetForm form);
 
     Response viewList(String list, long userId);
 

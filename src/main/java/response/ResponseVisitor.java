@@ -9,6 +9,8 @@ import model.*;
 
 public interface ResponseVisitor
 {
+    void pong(String pong);
+
     // Database event responses
 
     void getChat(Chat chat, DatabaseError err);

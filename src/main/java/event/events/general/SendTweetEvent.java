@@ -6,24 +6,16 @@ import response.Response;
 
 public class SendTweetEvent extends Event
 {
-    private final long userId;
-    private final long upperTweet;
-    private final String tweet;
-    private final String picture;
-    private final String authToken;
+    private final SendTweetForm form;
 
-    public SendTweetEvent(long userId, long upperTweet, String tweet, String picture, String authToken)
+    public SendTweetEvent(SendTweetForm form)
     {
-        this.userId = userId;
-        this.upperTweet = upperTweet;
-        this.tweet = tweet;
-        this.picture = picture;
-        this.authToken = authToken;
+        this.form = form;
     }
 
     @Override
     public Response visit(EventVisitor eventVisitor)
     {
-        return eventVisitor.sendTweet(userId, upperTweet, tweet, picture, authToken);
+        return eventVisitor.sendTweet(form);
     }
 }
