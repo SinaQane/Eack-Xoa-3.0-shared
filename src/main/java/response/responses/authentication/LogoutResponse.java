@@ -1,6 +1,6 @@
 package response.responses.authentication;
 
-public class LogoutResponse
+public class LogoutResponse // TODO write response
 {
-    // TODO
+
 }

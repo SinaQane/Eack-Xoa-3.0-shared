@@ -6,7 +6,7 @@ import response.Response;
 
 public class UserInteractionEvent extends Event
 {
-    // interaction can be "change follow status", "block" and "mute"
+    // interaction can be "change" as in "change follow status", "block" and "mute"
     private final String interaction;
     private final String authToken;
     private final long otherUserId;

@@ -1,6 +1,6 @@
 package response.responses.general;
 
-public class ViewListResponse
+public class ViewListResponse // TODO write response
 {
-    // TODO
+
 }

@@ -8,6 +8,8 @@ import response.Response;
 
 public interface EventVisitor
 {
+    // Ping request event
+
     Response ping(String ping);
 
     // Database events
@@ -40,9 +42,15 @@ public interface EventVisitor
 
     Response viewList(String list, long userId);
 
+    Response refreshList(String list, long userId);
+
     Response viewTweet(long tweetId);
 
+    Response refreshTweet(long tweetId);
+
     Response viewUser(long userId);
+
+    Response refreshUser(long userId);
 
     // Settings page events
 
@@ -59,6 +67,22 @@ public interface EventVisitor
     Response refreshProfile(long userId);
 
     Response userInteraction(String interaction, long userId, long otherUserId, String authToken);
+
+    // Explore page events
+
+    Response explore(long userId);
+
+    Response searchUser(long userId, String searchedWord);
+
+    // Timeline/Bookmark page events
+
+    Response viewTimeline(long userId);
+
+    Response refreshTimeline(long userId);
+
+    Response viewBookmarks(long userId);
+
+    Response refreshBookmarks(long userId);
 
     // Tweet events
 

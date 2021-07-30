@@ -1,6 +1,6 @@
 package response.responses.profile;
 
-public class ViewProfileResponse
+public class ViewProfileResponse // TODO write response
 {
-    // TODO
+
 }

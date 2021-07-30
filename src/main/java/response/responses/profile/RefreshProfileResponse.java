@@ -1,6 +1,6 @@
 package response.responses.profile;
 
-public class RefreshProfileResponse
+public class RefreshProfileResponse // TODO write response
 {
-    // TODO
+
 }

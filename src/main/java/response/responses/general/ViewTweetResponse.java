@@ -1,6 +1,6 @@
 package response.responses.general;
 
-public class ViewTweetResponse
+public class ViewTweetResponse // TODO write response
 {
-    // TODO
+
 }
