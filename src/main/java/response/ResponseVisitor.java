@@ -3,12 +3,18 @@ package response;
 import exceptions.DatabaseError;
 import exceptions.Unauthenticated;
 import exceptions.authentication.LoginFailed;
+import exceptions.authentication.LogoutFailed;
 import exceptions.authentication.SignUpFailed;
 import exceptions.settings.SettingsFailed;
+import exceptions.tweet.ForwardFailed;
 import model.*;
+
+import java.util.List;
 
 public interface ResponseVisitor
 {
+    //  Ping request event response
+
     void pong(String pong);
 
     // Database event responses
@@ -33,9 +39,25 @@ public interface ResponseVisitor
 
     void signUp(User user, String authToken, SignUpFailed err);
 
+    void logout(LogoutFailed logoutErr, Unauthenticated authErr);
+
     // General event responses
 
     void sendTweet(Unauthenticated err);
+
+    void viewList(String pageKind, User user, List<List<Long>> items);
+
+    void refreshList(String pageKind, User user, List<List<Long>> items);
+
+    void viewTweet(Tweet tweet, List<List<Long>> comments);
+
+    void refreshTweet(Tweet tweet, List<List<Long>> comments);
+
+    void viewUser(User user, List<List<Long[]>> tweets);
+
+    void refreshUser(User user, List<List<Long[]>> tweets);
+
+    void requestReaction(Unauthenticated authErr);
 
     // Settings page event responses
 
@@ -47,9 +69,31 @@ public interface ResponseVisitor
 
     // Profile page event responses
 
+    void viewProfile(User user, List<List<Long[]>> tweets);
+
+    void refreshProfile(User user, List<List<Long[]>> tweets);
+
     void userInteraction(Unauthenticated err);
+
+    // Explore page event responses
+
+    void explore(List<Long> tweets);
+
+    void searchUser(List<List<Long>> users);
+
+    // Timeline/Bookmark page event responses
+
+    void viewTimeline(List<List<Long[]>> tweets);
+
+    void refreshTimeline(List<List<Long[]>> tweets);
+
+    void viewBookmarks(List<List<Long[]>> tweets);
+
+    void refreshBookmarks(List<List<Long[]>> tweets);
 
     // Tweet event responses
 
     void tweetInteraction(Unauthenticated err);
+
+    void forwardTweet(ForwardFailed forwardErr, Unauthenticated authErr);
 }
