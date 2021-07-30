@@ -11,12 +11,12 @@ public class ForwardTweetEvent extends Event
     private final String groups;
     private final long tweetId;
 
-    public ForwardTweetEvent(String authToken, String usernames, String groups, long tweetId)
+    public ForwardTweetEvent(String usernames, String groups, long tweetId, String authToken)
     {
+        this.tweetId = tweetId;
         this.authToken = authToken;
         this.usernames = usernames;
         this.groups = groups;
-        this.tweetId = tweetId;
     }
 
     @Override
