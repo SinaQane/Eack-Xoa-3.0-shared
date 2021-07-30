@@ -6,7 +6,7 @@ import response.Response;
 
 public class ViewListEvent extends Event
 {
-    // list can be "followers", "followings" and "blacklist"
+    // list can be "followers", "followings", "blacklist" and "notifications"
     private final String list;
     private final long userId;
 

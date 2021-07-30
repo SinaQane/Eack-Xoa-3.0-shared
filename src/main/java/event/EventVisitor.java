@@ -87,4 +87,6 @@ public interface EventVisitor
     // Tweet events
 
     Response tweetInteraction(String interaction, long userId, long tweetId, String authToken);
+
+    Response forwardTweet(String usernames, String groups, long tweetId, String authToken);
 }
