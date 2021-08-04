@@ -114,14 +114,14 @@ public class Profile
         this.followers = followers;
     }
 
-    public void addToFollowers(User user)
+    public void addToFollowers(Long user)
     {
-        followers.add(user.getId());
+        followers.add(user);
     }
 
-    public void removeFromFollowers(User user)
+    public void removeFromFollowers(Long user)
     {
-        followers.remove(user.getId());
+        followers.remove(user);
     }
 
     public List<Long> getFollowings()
@@ -134,14 +134,14 @@ public class Profile
         this.followings = followings;
     }
 
-    public void addToFollowings(User user)
+    public void addToFollowings(Long user)
     {
-        followings.add(user.getId());
+        followings.add(user);
     }
 
-    public void removeFromFollowings(User user)
+    public void removeFromFollowings(Long user)
     {
-        followings.remove(user.getId());
+        followings.remove(user);
     }
 
     public List<Long> getBlocked()
@@ -154,14 +154,14 @@ public class Profile
         this.blocked = blocked;
     }
 
-    public void addToBlocked(User user)
+    public void addToBlocked(Long user)
     {
-        blocked.add(user.getId());
+        blocked.add(user);
     }
 
-    public void removeFromBlocked(User user)
+    public void removeFromBlocked(Long user)
     {
-        blocked.remove(user.getId());
+        blocked.remove(user);
     }
 
     public List<Long> getMuted()
@@ -174,14 +174,14 @@ public class Profile
         this.muted = muted;
     }
 
-    public void addToMuted(User user)
+    public void addToMuted(Long user)
     {
-        muted.add(user.getId());
+        muted.add(user);
     }
 
-    public void removeFromMuted(User user)
+    public void removeFromMuted(Long user)
     {
-        muted.remove(user.getId());
+        muted.remove(user);
     }
 
     public List<Long> getRequests()
@@ -194,14 +194,14 @@ public class Profile
         this.requests = requests;
     }
 
-    public void addToRequests(User user)
+    public void addToRequests(Long user)
     {
-        requests.add(user.getId());
+        requests.add(user);
     }
 
-    public void removeFromRequests(User user)
+    public void removeFromRequests(Long user)
     {
-        requests.remove(user.getId());
+        requests.remove(user);
     }
 
     public List<Long> getPending()
@@ -214,14 +214,14 @@ public class Profile
         this.pending = pending;
     }
 
-    public void addToPending(User user)
+    public void addToPending(Long user)
     {
-        pending.add(user.getId());
+        pending.add(user);
     }
 
-    public void removeFromPending(User user)
+    public void removeFromPending(Long user)
     {
-        pending.remove(user.getId());
+        pending.remove(user);
     }
 
     public List<Long> getUserTweets()
@@ -234,9 +234,9 @@ public class Profile
         this.userTweets = userTweets;
     }
 
-    public void addToUserTweets(Tweet tweet)
+    public void addToUserTweets(Long tweet)
     {
-        userTweets.add(tweet.getId());
+        userTweets.add(tweet);
     }
 
     public List<Long> getRetweetedTweets()
@@ -249,14 +249,14 @@ public class Profile
         this.retweetedTweets = retweetedTweets;
     }
 
-    public void addToRetweetedTweets(Tweet tweet)
+    public void addToRetweetedTweets(Long tweet)
     {
-        retweetedTweets.add(tweet.getId());
+        retweetedTweets.add(tweet);
     }
 
-    public void removeFromRetweetedTweets(Tweet tweet)
+    public void removeFromRetweetedTweets(Long tweet)
     {
-        retweetedTweets.remove(tweet.getId());
+        retweetedTweets.remove(tweet);
     }
 
     public List<Long> getUpvotedTweets()
@@ -269,14 +269,14 @@ public class Profile
         this.upvotedTweets = upvotedTweets;
     }
 
-    public void addToUpvotedTweets(Tweet tweet)
+    public void addToUpvotedTweets(Long tweet)
     {
-        upvotedTweets.add(tweet.getId());
+        upvotedTweets.add(tweet);
     }
 
-    public void removeFromUpvotedTweets(Tweet tweet)
+    public void removeFromUpvotedTweets(Long tweet)
     {
-        upvotedTweets.remove(tweet.getId());
+        upvotedTweets.remove(tweet);
     }
 
     public List<Long> getDownvotedTweets()
@@ -289,14 +289,14 @@ public class Profile
         this.downvotedTweets = downvotedTweets;
     }
 
-    public void addToDownvotedTweets(Tweet tweet)
+    public void addToDownvotedTweets(Long tweet)
     {
-        downvotedTweets.add(tweet.getId());
+        downvotedTweets.add(tweet);
     }
 
-    public void removeFromDownvotedTweets(Tweet tweet)
+    public void removeFromDownvotedTweets(Long tweet)
     {
-        downvotedTweets.remove(tweet.getId());
+        downvotedTweets.remove(tweet);
     }
 
     public List<Long> getReportedTweets()
@@ -309,9 +309,9 @@ public class Profile
         this.reportedTweets = reportedTweets;
     }
 
-    public void addToReportedTweets(Tweet tweet)
+    public void addToReportedTweets(Long tweet)
     {
-        reportedTweets.add(tweet.getId());
+        reportedTweets.add(tweet);
     }
 
     public List<Long> getSavedTweets()
@@ -324,14 +324,14 @@ public class Profile
         this.savedTweets = savedTweets;
     }
 
-    public void addToSavedTweets(Tweet tweet)
+    public void addToSavedTweets(Long tweet)
     {
-        savedTweets.add(tweet.getId());
+        savedTweets.add(tweet);
     }
 
-    public void removeFromSavedTweets(Tweet tweet)
+    public void removeFromSavedTweets(Long tweet)
     {
-        savedTweets.remove(tweet.getId());
+        savedTweets.remove(tweet);
     }
 
     public List<Long> getNotifications()
@@ -344,9 +344,9 @@ public class Profile
         this.notifications = notifications;
     }
 
-    public void addToNotifications(Notification notification)
+    public void addToNotifications(Long notification)
     {
-        notifications.add(notification.getId());
+        notifications.add(notification);
     }
 
     public List<Long> getGroups()
@@ -359,9 +359,9 @@ public class Profile
         this.groups = groups;
     }
 
-    public void addToGroups(Group group)
+    public void addToGroups(Long group)
     {
-        groups.add(group.getId());
+        groups.add(group);
     }
 
     public void removeGroup(int index)
@@ -379,8 +379,8 @@ public class Profile
         this.chats = chats;
     }
 
-    public void addToChats(Chat chat)
+    public void addToChats(Long chat)
     {
-        this.chats.add(chat.getId());
+        this.chats.add(chat);
     }
 }

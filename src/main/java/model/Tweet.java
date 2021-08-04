@@ -100,7 +100,7 @@ public class Tweet
 
     public List<Long> getComments()
     {
-        return this.comments;
+        return comments;
     }
 
     public void setComments(List<Long> comments)
@@ -108,9 +108,9 @@ public class Tweet
         this.comments = comments;
     }
 
-    public void addComment(Tweet comment)
+    public void addComment(Long comment)
     {
-        this.comments.add(comment.getId());
+        comments.add(comment);
     }
 
     public List<Long> getUpvotes()
@@ -123,14 +123,14 @@ public class Tweet
         this.upvotes = upvotes;
     }
 
-    public void addUpvote(User user)
+    public void addUpvote(Long user)
     {
-        this.upvotes.add(user.getId());
+        upvotes.add(user);
     }
 
-    public void removeUpvote(User user)
+    public void removeUpvote(Long user)
     {
-        this.upvotes.remove(user.getId());
+        upvotes.remove(user);
     }
 
     public List<Long> getDownvotes()
@@ -143,14 +143,14 @@ public class Tweet
         this.downvotes = downvotes;
     }
 
-    public void addDownvote(User user)
+    public void addDownvote(Long user)
     {
-        this.downvotes.add(user.getId());
+        downvotes.add(user);
     }
 
-    public void removeDownvote(User user)
+    public void removeDownvote(Long user)
     {
-        this.downvotes.remove(user.getId());
+        downvotes.remove(user);
     }
 
     public List<Long> getRetweets()
@@ -163,14 +163,14 @@ public class Tweet
         this.retweets = retweets;
     }
 
-    public void addRetweet(User user)
+    public void addRetweet(Long user)
     {
-        this.retweets.add(user.getId());
+        retweets.add(user);
     }
 
-    public void removeRetweet(User user)
+    public void removeRetweet(Long user)
     {
-        this.retweets.remove(user.getId());
+        retweets.remove(user);
     }
 
     public int getReports()
@@ -200,6 +200,6 @@ public class Tweet
 
     public void deleteTweet()
     {
-        this.visible = false;
+        visible = false;
     }
 }

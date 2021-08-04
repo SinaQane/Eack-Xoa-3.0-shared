@@ -150,11 +150,11 @@ public class Message
         this.seenList = seenList;
     }
 
-    public void addToSeen(User user)
+    public void addToSeen(Long user)
     {
-        if (!seenList.contains(user.getId()))
+        if (!seenList.contains(user))
         {
-            seenList.add(user.getId());
+            seenList.add(user);
         }
     }
 

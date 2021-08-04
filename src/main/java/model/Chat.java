@@ -73,11 +73,11 @@ public class Chat
         this.users = users;
     }
 
-    public void addToUsers(User user)
+    public void addToUsers(Long user)
     {
-        if (!this.users.contains(user.getId()))
+        if (!users.contains(user))
         {
-            this.users.add(user.getId());
+            users.add(user);
         }
     }
 
@@ -91,8 +91,8 @@ public class Chat
         this.messages = messages;
     }
 
-    public void addToMessages(Message message)
+    public void addToMessages(Long message)
     {
-        messages.add(message.getId());
+        messages.add(message);
     }
 }

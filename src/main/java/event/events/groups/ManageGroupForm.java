@@ -7,14 +7,14 @@ public class ManageGroupForm
     private final Long id;
     private final String title;
     private final List<String> toAdd;
-    private final List<String> roRemove;
+    private final List<String> toRemove;
 
-    public ManageGroupForm(Long id, String title, List<String> toAdd, List<String> roRemove)
+    public ManageGroupForm(Long id, String title, List<String> toAdd, List<String> toRemove)
     {
         this.id = id;
         this.title = title;
         this.toAdd = toAdd;
-        this.roRemove = roRemove;
+        this.toRemove = toRemove;
     }
 
     public Long getId()
@@ -32,8 +32,8 @@ public class ManageGroupForm
         return toAdd;
     }
 
-    public List<String> getRoRemove()
+    public List<String> getToRemove()
     {
-        return roRemove;
+        return toRemove;
     }
 }

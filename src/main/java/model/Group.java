@@ -51,16 +51,16 @@ public class Group
         this.members = members;
     }
 
-    public void addToGroup(User user)
+    public void addToGroup(Long user)
     {
-        if (!members.contains(user.getId()))
+        if (!members.contains(user))
         {
-            members.add(user.getId());
+            members.add(user);
         }
     }
 
-    public void removeFromGroup(User user)
+    public void removeFromGroup(Long user)
     {
-        members.remove(user.getId());
+        members.remove(user);
     }
 }
