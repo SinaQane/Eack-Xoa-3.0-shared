@@ -91,6 +91,14 @@ public interface ResponseVisitor
 
     void refreshBookmarks(List<List<Long[]>> tweets);
 
+    // Groups page event responses
+
+    void viewGroupsPage(List<List<Long>> groups);
+
+    void refreshGroupsPage(List<List<Long>> groups);
+
+    void manageGroup(Unauthenticated err);
+
     // Tweet event responses
 
     void tweetInteraction(Unauthenticated err);

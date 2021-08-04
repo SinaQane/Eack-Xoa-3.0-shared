@@ -24,7 +24,6 @@ public class User
     {
         this.username = username;
         this.password = password;
-        // TODO new Profile(this.id);
     }
 
     public Long getId()

@@ -3,6 +3,7 @@ package event;
 import event.events.authentication.LoginForm;
 import event.events.authentication.SignUpForm;
 import event.events.general.SendTweetForm;
+import event.events.groups.ManageGroupForm;
 import event.events.settings.SettingsForm;
 import response.Response;
 
@@ -85,6 +86,14 @@ public interface EventVisitor
     Response viewBookmarks(long userId);
 
     Response refreshBookmarks(long userId);
+
+    // Groups page events
+
+    Response viewGroupsPage(Long userId);
+
+    Response refreshGroupsPage(Long userId);
+
+    Response manageGroup(ManageGroupForm form, String authToken);
 
     // Tweet events
 
