@@ -4,8 +4,12 @@ import event.events.authentication.LoginForm;
 import event.events.authentication.SignUpForm;
 import event.events.general.SendTweetForm;
 import event.events.groups.ManageGroupForm;
+import event.events.messages.MessageForm;
 import event.events.settings.SettingsForm;
+import model.Message;
 import response.Response;
+
+import java.util.List;
 
 public interface EventVisitor
 {
@@ -94,6 +98,26 @@ public interface EventVisitor
     Response refreshGroupsPage(Long userId);
 
     Response manageGroup(ManageGroupForm form, String authToken);
+
+    // Messages page events
+
+    Response receivedAllMessages(Long userId, String authToken);
+
+    Response viewChatroom(Long chatId);
+
+    Response refreshChatroom(Long chatId);
+
+    Response viewMessagesPage(Long userId);
+
+    Response refreshMessagesPage(Long userId);
+
+    Response sendMessage(MessageForm form, String authToken);
+
+    Response editMessage(MessageForm form, String authToken);
+
+    Response deleteMessage(long messageId, String authToken);
+
+    Response sendCachedMessages(List<Message> messages, String authToken);
 
     // Tweet events
 

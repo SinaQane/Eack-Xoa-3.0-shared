@@ -99,6 +99,26 @@ public interface ResponseVisitor
 
     void manageGroup(Unauthenticated err);
 
+    // Messages page event responses
+
+    void receivedAllMessages(Unauthenticated err);
+
+    void viewChatroom(List<Long> messages, Long chatId);
+
+    void refreshChatroom(List<Long> messages, Long chatId);
+
+    void viewMessagesPage(List<List<Long[]>> chatsList);
+
+    void refreshMessagesPage(List<List<Long[]>> chatsList);
+
+    void sendMessage(Unauthenticated err);
+
+    void editMessage(Unauthenticated err);
+
+    void deleteMessage(Unauthenticated err);
+
+    void sendCachedMessages(Unauthenticated err);
+
     // Tweet event responses
 
     void tweetInteraction(Unauthenticated err);
