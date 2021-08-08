@@ -119,6 +119,12 @@ public interface EventVisitor
 
     Response sendCachedMessages(List<Message> messages, String authToken);
 
+    Response newChat(String username, String chatName, String authToken);
+
+    Response addMember(Long chatId, String username, String authToken);
+
+    Response leaveGroup(Long chatId, String authToken);
+
     // Tweet events
 
     Response tweetInteraction(String interaction, long userId, long tweetId, String authToken);

@@ -5,6 +5,7 @@ import exceptions.Unauthenticated;
 import exceptions.authentication.LoginFailed;
 import exceptions.authentication.LogoutFailed;
 import exceptions.authentication.SignUpFailed;
+import exceptions.messages.ChatCreationFailed;
 import exceptions.settings.SettingsFailed;
 import exceptions.tweet.ForwardFailed;
 import model.*;
@@ -118,6 +119,12 @@ public interface ResponseVisitor
     void deleteMessage(Unauthenticated err);
 
     void sendCachedMessages(Unauthenticated err);
+
+    void newChat(Unauthenticated err, ChatCreationFailed failed);
+
+    void addMember(Unauthenticated err);
+
+    void leaveGroup(Unauthenticated err);
 
     // Tweet event responses
 
