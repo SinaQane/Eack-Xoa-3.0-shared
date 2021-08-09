@@ -8,7 +8,7 @@ public class MessageForm
 
     private String text;
     private String base64Picture;
-    private Long messageDateUnix;
+    private Long messageDate = -1L;
 
     public Long getId()
     {
@@ -60,13 +60,13 @@ public class MessageForm
         this.base64Picture = base64Picture;
     }
 
-    public Long getMessageDateUnix()
+    public Long getMessageDate()
     {
-        return messageDateUnix;
+        return messageDate;
     }
 
-    public void setMessageDateUnix(Long messageDateUnix)
+    public void setMessageDate(Long messageDate)
     {
-        this.messageDateUnix = messageDateUnix;
+        this.messageDate = messageDate;
     }
 }

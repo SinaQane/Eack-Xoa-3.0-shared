@@ -35,7 +35,6 @@ public class Message
         index = chat.getMessages().size();
         this.base64Picture = base64Picture;
         messageDateUnix = new Date().getTime();
-        // TODO chat.addToMessages(this);
     }
 
     // Constructor for the case which the message is a forwarded tweet
@@ -48,7 +47,6 @@ public class Message
         index = chat.getMessages().size();
         base64Picture = tweet.getPicture();
         messageDateUnix = new Date().getTime();
-        // TODO chat.addToMessages(this);
     }
 
     public Long getId()
