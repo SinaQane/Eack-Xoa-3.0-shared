@@ -1,10 +1,19 @@
 package util;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Loop
 {
+    private final BigDecimal ONE = new BigDecimal(1);
+    private final BigDecimal MILLION = new BigDecimal(1000000);
+    private final BigDecimal BILLION = new BigDecimal(1000000000);
+    private final BigDecimal MAX_VALUE = new BigDecimal(Long.MAX_VALUE);
+
     private final double fps;
-    protected Thread thread;
     private final Runnable updatable;
+
+    protected Thread thread;
     private volatile boolean running;
 
     public Loop(double fps, Runnable updatable)
@@ -46,19 +55,19 @@ public class Loop
 
     private void run()
     {
-        long lastCycleTime = System.nanoTime();
-        double nanosecondsPerUpdate = 1000000000 / fps;
-        double delta = 0;
+        BigDecimal lastCycleTime = new BigDecimal(System.nanoTime());
+        BigDecimal nanosecondsPerUpdate = BILLION.divide(new BigDecimal(fps), RoundingMode.UNNECESSARY);
+        BigDecimal delta = new BigDecimal(0);
         while (running)
         {
-            long now = System.nanoTime();
-            delta += (now - lastCycleTime) * 1.0 / nanosecondsPerUpdate;
+            BigDecimal now = new BigDecimal(System.nanoTime());
+            delta = delta.add(now.subtract(lastCycleTime).divide(nanosecondsPerUpdate, RoundingMode.UNNECESSARY));
             lastCycleTime = now;
-            if (delta < 1)
+            if (delta.compareTo(ONE) < 0)
             {
-                sleep((long) (nanosecondsPerUpdate * (1 - delta)));
+                sleep(nanosecondsPerUpdate.multiply(ONE.subtract(delta)));
             }
-            while (running && delta >= 1)
+            while (running && delta.compareTo(ONE) >= 0)
             {
                 try
                 {
@@ -68,8 +77,23 @@ public class Loop
                 {
                     throwable.printStackTrace();
                 }
-                delta--;
+                delta = delta.subtract(ONE);
             }
+        }
+    }
+
+    public void sleep(BigDecimal time)
+    {
+        BigDecimal temp = time.divide(MILLION, RoundingMode.UNNECESSARY);
+        long milliseconds = temp.compareTo(MAX_VALUE) < 0 ? Long.MAX_VALUE : temp.longValue();
+        int nanoseconds = time.remainder(MILLION).intValue();
+        try
+        {
+            Thread.sleep(milliseconds, nanoseconds);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
         }
     }
 
@@ -78,20 +102,6 @@ public class Loop
         if (updatable != null)
         {
             updatable.run();
-        }
-    }
-
-    public void sleep(long time)
-    {
-        int milliseconds = (int) (time) / 1000000;
-        int nanoseconds = (int) (time) % 1000000;
-        try
-        {
-            Thread.sleep(milliseconds, nanoseconds);
-        }
-        catch (InterruptedException e)
-        {
-            e.printStackTrace();
         }
     }
 }

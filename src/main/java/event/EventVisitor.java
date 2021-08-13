@@ -59,6 +59,8 @@ public interface EventVisitor
 
     Response requestReaction(String reaction, long notificationId, String authToken);
 
+    Response refreshLastSeen(Long userId);
+
     // Settings page events
 
     Response settings(SettingsForm form, Long userId, String authToken, boolean online);

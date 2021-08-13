@@ -21,7 +21,7 @@ public class ImageUtil
         return Base64.getEncoder().encodeToString(bytes);
     }
 
-    public static String imageToBytes(String path)
+    public static String imageToString(String path)
     {
         String picture = "";
         if (!path.equals(""))

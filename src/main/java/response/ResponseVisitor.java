@@ -60,6 +60,8 @@ public interface ResponseVisitor
 
     void requestReaction(Unauthenticated authErr);
 
+    void refreshLastSeen();
+
     // Settings page event responses
 
     void settings(boolean online, SettingsFailed err, Unauthenticated authErr);
