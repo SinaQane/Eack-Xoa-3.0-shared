@@ -1,27 +1,29 @@
 package model;
 
+import constants.SharedConstants;
+
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Message
 {
-    private Long id;
-    private String text;
-    private Long chatId;
-    private Long ownerId;
-    private int index;
-    private String base64Picture;
-    private Long messageDateUnix;
+    private Long id = -1L;
+    private String text = "";
+    private Long chatId = -1L;
+    private Long ownerId = -1L;
+    private int index = 0;
+    private String base64Picture = "";
+    private Long messageDateUnix = SharedConstants.DEFAULT_DATE;
     private List<Long> seenList = new LinkedList<>();
 
-    // For private chats (phase-3 shit)
+    // For private chats (phase-3 stuff)
     private boolean sent = false;
     private boolean received = false;
     private boolean seen = false;
 
     // tweetId is the id of the tweet which this message forwards that (-1 if non-existent)
-    private Long tweetId;
+    private Long tweetId = -1L;
 
     public Message() {}
 

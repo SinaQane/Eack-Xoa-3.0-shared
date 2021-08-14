@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Profile
 {
-    private Long id;
+    private Long id = -1L;
     private Date lastSeen = new Date();
 
     private List<Long> followers = new LinkedList<>();

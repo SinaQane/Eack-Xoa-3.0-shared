@@ -1,16 +1,18 @@
 package model;
 
+import constants.SharedConstants;
+
 import java.util.Date;
 
 public class User
 {
-    private Long id;
-    private String username;
-    private String password;
-    private String name;
-    private String email;
-    private String phoneNumber;
-    private String bio;
+    private Long id = -1L;
+    private String username = "";
+    private String password = "";
+    private String name = "";
+    private String email = "";
+    private String phoneNumber = "";
+    private String bio = "";
     private Date birthDate;
 
     // isActive is "true" if the page is active and "false" if it's deactivated.
@@ -98,6 +100,10 @@ public class User
 
     public Date getBirthDate()
     {
+        if (birthDate == null)
+        {
+            return new Date(SharedConstants.DEFAULT_DATE);
+        }
         return birthDate;
     }
 

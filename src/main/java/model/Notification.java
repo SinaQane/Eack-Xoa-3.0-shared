@@ -2,10 +2,10 @@ package model;
 
 public class Notification
 {
-    private Long id;
-    private Long owner;
-    private Long requestFrom;
-    private String text;
+    private Long id = -1L;
+    private Long owner = -1L;
+    private Long requestFrom = -1L;
+    private String text = "";
 
     public Notification() {}
 

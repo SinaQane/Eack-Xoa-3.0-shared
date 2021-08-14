@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Group
 {
-    private Long id;
-    private String title;
+    private Long id = -1L;
+    private String title = "";
     private List<Long> members = new LinkedList<>();
 
     public Group() {}

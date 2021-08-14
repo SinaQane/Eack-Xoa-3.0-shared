@@ -5,33 +5,31 @@ import java.util.List;
 
 public class Chat
 {
-    private Long id;
-    private String chatName;
-    private boolean group;
+    private Long id = -1L;
+    private String chatName = "";
+    private boolean group = false;
     private List<Long> users = new LinkedList<>();
     private List<Long> messages = new LinkedList<>();
 
     public Chat()
     {
-        this.id = -1L;
-        this.group = false;
+        id = -1L;
     }
 
     // Constructor for group chats
-    public Chat(User user, String chatName)
+    public Chat(User user, String name)
     {
-        this.group = true;
-        this.chatName = chatName;
-        this.users.add(user.getId());
+        group = true;
+        chatName = name;
+        users.add(user.getId());
     }
 
     // Constructor for private chats
     public Chat(User user1, User user2)
     {
-        this.group = false;
-        this.chatName = user1.getUsername() + " - " + user2.getUsername();
-        this.users.add(user1.getId());
-        this.users.add(user2.getId());
+        chatName = user1.getUsername() + " - " + user2.getUsername();
+        users.add(user1.getId());
+        users.add(user2.getId());
     }
 
     public Long getId()
@@ -39,7 +37,8 @@ public class Chat
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 

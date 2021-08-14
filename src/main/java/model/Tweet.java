@@ -1,5 +1,7 @@
 package model;
 
+import constants.SharedConstants;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -7,18 +9,18 @@ import java.util.List;
 
 public class Tweet
 {
-    private Long id;
-    private Long owner;
-    private int reports;
-    private String text;
+    private Long id = -1L;
+    private Long owner = -1L;
+    private int reports = 0;
+    private String text = "";
     private Date tweetDate;
 
     // upperTweetId is the id of the tweet's parent tweet (-1 if non-existent)
-    private Long upperTweet;
+    private Long upperTweet = -1L;
     // base64Picture is the picture linked to the tweet converted into base64 binary form
-    private String base64Picture;
+    private String base64Picture = "";
     // visible indicates that is this tweet deleted or not
-    private boolean visible;
+    private boolean visible = true;
 
     private List<Long> comments = new LinkedList<>();
     private List<Long> upvotes = new ArrayList<>();
@@ -90,6 +92,10 @@ public class Tweet
 
     public Date getTweetDate()
     {
+        if (tweetDate == null)
+        {
+            return new Date(SharedConstants.DEFAULT_DATE);
+        }
         return tweetDate;
     }
 
