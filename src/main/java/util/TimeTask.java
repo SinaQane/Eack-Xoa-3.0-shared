@@ -26,9 +26,9 @@ public class TimeTask
 
     private void run()
     {
+        int helpTime = time;
         while (running)
         {
-            int helpTime = time;
             if (0 < helpTime)
             {
                 sleep(1000000000L);
@@ -38,6 +38,7 @@ public class TimeTask
             {
                 try
                 {
+                    helpTime = time;
                     update();
                 }
                 catch (Throwable throwable)
