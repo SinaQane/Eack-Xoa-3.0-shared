@@ -35,7 +35,7 @@ public class Profile
     // infoState is for Email, Phone number and Birthdate. "true" for public and "false" for private.
     private boolean infoState = false;
     // lastSeenState is "0" for no one, "1" for followings only and "2" for everyone.
-    private int lastSeenState = 1;
+    private int lastSeenState = 2;
 
     public Profile() {}
 
