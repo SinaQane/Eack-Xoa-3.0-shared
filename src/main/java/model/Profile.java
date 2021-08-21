@@ -30,10 +30,10 @@ public class Profile
     // base64Picture is the profile picture converted into base64 binary form
     private String base64Picture = "";
 
-    // privateState is "true" if the page is private and "false" if if it's public.
+    // privateState is "true" if the page is private and "false" if it's public.
     private boolean privateState = false;
     // infoState is for Email, Phone number and Birthdate. "true" for public and "false" for private.
-    private boolean infoState = false;
+    private boolean infoState = true;
     // lastSeenState is "0" for no one, "1" for followings only and "2" for everyone.
     private int lastSeenState = 2;
 

@@ -15,6 +15,16 @@ public class OfflineLoginResponse extends Response
         this.user = user;
     }
 
+    public User getUser()
+    {
+        return user;
+    }
+
+    public String getAuthToken()
+    {
+        return authToken;
+    }
+
     @Override
     public void visit(ResponseVisitor responseVisitor)
     {

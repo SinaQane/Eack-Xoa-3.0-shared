@@ -18,6 +18,21 @@ public class LoginResponse extends Response
         this.err = err;
     }
 
+    public User getUser()
+    {
+        return user;
+    }
+
+    public String getAuthToken()
+    {
+        return authToken;
+    }
+
+    public LoginFailed getErr()
+    {
+        return err;
+    }
+
     @Override
     public void visit(ResponseVisitor responseVisitor)
     {
